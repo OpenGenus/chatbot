@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aiml>
+  
+  <!--Demonstrating a basic category-->
+  <category>
+    <pattern>NAME A COOL WEBSITE</pattern>
+    <template>I think you are looking for iq.opengenus.org</template>
+    </category>
+  
+  
+  <!--Demonstrating the '*'-->
   <category>
     <pattern>*</pattern>
     <template>I have no answer for that.</template>
@@ -11,6 +20,18 @@
   </category>
   
   <category>
+        <pattern>SAY *</pattern>
+        <template><star/></template>
+    </category>
+  
+   <!--Demonstrating the <star/>-->
+  <category>
+        <pattern>SAY * IS BETTER THAN *</pattern>
+        <template>I believe <star index="1"/> and <star index="2"/> must be given an equal chance! </template>
+    </category>
+  
+  <!--Demonstrating the <star/> and <set> with <think> tag-->
+  <category>
     <pattern>I AM * *</pattern>
     <template>
         Hey <set name = "firstname"><star index = "1"/></set>. 
@@ -19,6 +40,7 @@
     </template>
   </category>
   
+  <!--Demonstrating properties with <get>-->
   <category>
       <pattern>WHO ARE YOU</pattern>
       <template>I am <bot name = "name"/></template>
@@ -28,16 +50,14 @@
       <template>Yes! You are <get name = "firstname"/> <get name = "surname"/></template>
   </category>
   
+  <!--Demonstrating <get> tag-->
   <category>
     <pattern>TELL ME A SECRET</pattern>
     <template>But <get name = "firstname"/>, it won't be a secret then!</template>
   </category>
   
-  <category>
-    <pattern>NAME A COOL WEBSITE</pattern>
-    <template>I think you are looking for iq.opengenus.org</template>
-    </category>
 
+  <!--Demonstrating <learn> tag-->
     <category>
         <pattern>NAME A COOL *</pattern>
         <template>
@@ -51,16 +71,7 @@
         </template>
     </category>
     
-    <category>
-        <pattern>SAY *</pattern>
-        <template><star/></template>
-    </category>
-    
-    <category>
-        <pattern>SAY * IS BETTER THAN *</pattern>
-        <template>I believe <star index="1"/> and <star index="2"/> must be given an equal chance! </template>
-    </category>
-    
+    <!--Demonstrating <random> tag-->
     <category>
         <pattern>ROLL A DICE</pattern>
         <template>
@@ -75,6 +86,7 @@
         </template>
     </category>
     
+  <!--Demonstrating Condition-->
     <category>
         <pattern>CAN I GET A * ON THE DICE</pattern>
         <template>
@@ -97,6 +109,7 @@
         </template>
     </category>
     
+  <!--Demonstrating <srai> tag-->
     <category>
         <pattern>ASK ME A QUESTION</pattern>
         <template>
@@ -128,6 +141,14 @@
         <template>Yayy! I find you good as well!</template>
     </category>
     
+    <!--Demonstrating '_' with <srai> tag-->
+  <category>
+        <pattern>_ PLEASE</pattern>
+        <template>You are so polite. <srai><star/></srai></template>
+    </category>
+  
+  <!--Demonstrating <that> tag-->
+  
     <category>
         <that>DO YOU LIKE ME</that>
         <pattern>NO</pattern>
@@ -146,6 +167,8 @@
         <template>Seems like I'm getting good at this!</template>
     </category>
     
+  <!--Demonstrating <topic> tag-->
+  
     <category>
         <pattern>LETS TALK ABOUT TECH</pattern>
         <template>    
@@ -171,6 +194,7 @@
         </category>
     </topic>
     
+  <!--Demonstrating <formatting> tag-->
     <category>
             <pattern>DISPLAY * IN LOWERCASE</pattern>
             <template>
@@ -188,6 +212,8 @@
             <pattern>SPELL * </pattern>
             <template>
                 <explode><uppercase><star/></uppercase></explode>
+                <!-- Uppercase only because it makes greater sense spelling 
+                      that way and has nothing to do with syntax of explode-->
             </template>
         </category>
         
@@ -197,10 +223,5 @@
                 <formal><star/></formal>
             </template>
         </category>
-    
-    <category>
-        <pattern>_ PLEASE</pattern>
-        <template>You are so polite. <srai><star/></srai></template>
-    </category>
     
 </aiml>
