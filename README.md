@@ -1,6 +1,7 @@
 # Basic AIML Chatbot
 
 This repository contains a chatbot for very minimal and basic conversations. It is built with reference to an article(in drafting stage  right now) at OpenGenus and explains the following.
+Go to `files.udc.aiml` to understand the context for now.
 
 * '*' wildcard
 * '_' wildcard
