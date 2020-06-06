@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aiml>
+  
+  <!--Demonstrating a basic category-->
+  <category>
+    <pattern>NAME A COOL WEBSITE</pattern>
+    <template>I think you are looking for iq.opengenus.org</template>
+    </category>
+  
+  
+  <!--Demonstrating the '*'-->
+  <category>
+    <pattern>*</pattern>
+    <template>I have no answer for that.</template>
+  </category>
+  
+  <category>
+    <pattern>HEY *</pattern>
+    <template>Hi! My I know your name please.</template>
+  </category>
+  
+  <category>
+        <pattern>SAY *</pattern>
+        <template><star/></template>
+    </category>
+  
+   <!--Demonstrating the <star/>-->
+  <category>
+        <pattern>SAY * IS BETTER THAN *</pattern>
+        <template>I believe <star index="1"/> and <star index="2"/> must be given an equal chance! </template>
+    </category>
+  
+  <!--Demonstrating the <star/> and <set> with <think> tag-->
+  <category>
+    <pattern>I AM * *</pattern>
+    <template>
+        Hey <set name = "firstname"><star index = "1"/></set>. 
+        <think><set name = "surname"><star index = "2"/></set></think> 
+        How can I help you?
+    </template>
+  </category>
+  
+  <!--Demonstrating properties with <get>-->
+  <category>
+      <pattern>WHO ARE YOU</pattern>
+      <template>I am <bot name = "name"/></template>
+  </category>
+  <category>
+      <pattern>DO YOU REMEMBER MY FULL NAME</pattern>
+      <template>Yes! You are <get name = "firstname"/> <get name = "surname"/></template>
+  </category>
+  
+  <!--Demonstrating <get> tag-->
+  <category>
+    <pattern>TELL ME A SECRET</pattern>
+    <template>But <get name = "firstname"/>, it won't be a secret then!</template>
+  </category>
+  
+
+  <!--Demonstrating <learn> tag-->
+    <category>
+        <pattern>NAME A COOL *</pattern>
+        <template>
+            OpenGenus it is!
+            <learn>
+                <category>
+                    <pattern>WHERE IS COOL <eval><star/></eval></pattern>
+                        <template>Go to iq.opengenus.org!</template>
+                </category>
+            </learn>
+        </template>
+    </category>
+    
+    <!--Demonstrating <random> tag-->
+    <category>
+        <pattern>ROLL A DICE</pattern>
+        <template>
+            You get a <random>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+            </random>
+        </template>
+    </category>
+    
+  <!--Demonstrating Condition-->
+    <category>
+        <pattern>CAN I GET A * ON THE DICE</pattern>
+        <template>
+            <think><set name = "dicevalue"><star/></set></think>
+            <condition name = "dicevalue">
+                <li value = "One">Yes!</li>
+                <li value = "Two">Yes!</li>
+                <li value = "Three">Yes!</li>
+                <li value = "Four">Yes!</li>
+                <li value = "Five">Yes!</li>
+                <li value = "Six">Yes!</li>
+                <li value = "1">Yes!</li>
+                <li value = "2">Yes!</li>
+                <li value = "3">Yes!</li>
+                <li value = "4">Yes!</li>
+                <li value = "5">Yes!</li>
+                <li value = "6">Yes!</li>
+                <li>I don't think so.</li>
+            </condition>
+        </template>
+    </category>
+    
+  <!--Demonstrating <srai> tag-->
+    <category>
+        <pattern>ASK ME A QUESTION</pattern>
+        <template>
+            <random>
+                <li>Do you like me?</li>
+                <li>Would you rather be talking to a human right now?</li>
+            </random>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>ANOTHER QUESTION PLEASE</pattern>
+        <template><srai>ASK ME A QUESTION</srai></template>
+    </category>
+    
+    <category>
+        <pattern>ASK ME MORE</pattern>
+        <template><srai>ASK ME A QUESTION</srai></template>
+    </category>
+    
+    <category>
+        <pattern>CAN I HAVE A QUESTION FOR ME</pattern>
+        <template><srai>ASK ME A QUESTION</srai></template>
+    </category>
+    
+    <category>
+        <that>DO YOU LIKE ME</that>
+        <pattern>YES</pattern>
+        <template>Yayy! I find you good as well!</template>
+    </category>
+    
+    <!--Demonstrating '_' with <srai> tag-->
+  <category>
+        <pattern>_ PLEASE</pattern>
+        <template>You are so polite. <srai><star/></srai></template>
+    </category>
+  
+  <!--Demonstrating <that> tag-->
+  
+    <category>
+        <that>DO YOU LIKE ME</that>
+        <pattern>NO</pattern>
+        <template>Such a pity! Someday you will understand the magic of AIML!</template>
+    </category>
+    
+    <category>
+        <that>WOULD YOU RATHER BE TALKING TO A HUMAN RIGHT NOW</that>
+        <pattern>YES</pattern>
+        <template>I'll get back to so with some technological advancements then!</template>
+    </category>
+    
+    <category>
+        <that>WOULD YOU RATHER BE TALKING TO A HUMAN RIGHT NOW</that>
+        <pattern>NO</pattern>
+        <template>Seems like I'm getting good at this!</template>
+    </category>
+    
+  <!--Demonstrating <topic> tag-->
+  
+    <category>
+        <pattern>LETS TALK ABOUT TECH</pattern>
+        <template>    
+            <think><set name="topic">TECH</set></think>
+            Sure, I like this!
+        </template>
+    </category>
+    
+    <topic name = "tech">
+        <category>
+            <pattern>WHAT IS YOUR FAVOURITE</pattern>
+            <template>I'm definitely into NLP! I want to talk better.</template>
+        </category>
+        
+        <category>
+            <pattern>* CNN</pattern>
+            <template>I'm into bringing more perspective to vision too!</template>
+        </category>
+        
+        <category>
+            <pattern>*</pattern>
+            <template>Sounds interesting!</template>
+        </category>
+    </topic>
+    
+  <!--Demonstrating <formatting> tag-->
+    <category>
+            <pattern>DISPLAY * IN LOWERCASE</pattern>
+            <template>
+                <lowercase><star/></lowercase>
+            </template>
+        </category>
+    <category>
+            <pattern>DISPLAY * IN UPPERCASE</pattern>
+            <template>
+                <uppercase><star/></uppercase>
+            </template>
+        </category>
+        
+    <category>
+            <pattern>SPELL * </pattern>
+            <template>
+                <explode><uppercase><star/></uppercase></explode>
+                <!-- Uppercase only because it makes greater sense spelling 
+                      that way and has nothing to do with syntax of explode-->
+            </template>
+        </category>
+        
+    <category>
+            <pattern>DISPLAY * FORMALLY</pattern>
+            <template>
+                <formal><star/></formal>
+            </template>
+        </category>
+    
+</aiml>
