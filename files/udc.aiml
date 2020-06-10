@@ -384,14 +384,16 @@
         <template>Today is <date format="%A"/></template>
     </category>
     
-    <!--Input-->
+    <!--Input and Response-->
     <category>
         <pattern>WHAT DID I JUST SAY</pattern>
         <template>
-            You said <input index="2"/> 
+            <!--Input-->
+            You said <input index="2"/>
             <learn>
                 <category>
                     <pattern>WHAT DID YOU REPLY</pattern>
+                        <!--Response-->
                         <template>I replied <response index="2"/></template>
                 </category>
             </learn>
