@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <aiml>
   
+  <!--Getting started with AIML-->
+  
   <!--Demonstrating a basic category-->
   <category>
     <pattern>NAME A COOL WEBSITE</pattern>
@@ -223,5 +225,177 @@
                 <formal><star/></formal>
             </template>
         </category>
+        
+    <!-- Advancing AIML-->
     
-</aiml>
+    <!--Sets-->
+    <category>
+        <pattern>HAVE YOU HEARD OF <set>creators</set></pattern>
+        <template>Yeah, I give them some credit to my existence!</template>
+    </category>
+    
+    <category>
+        <pattern>HAVE YOU HEARD OF *</pattern>
+        <template>Not really</template>
+    </category>
+    
+    <!--Maps-->
+    <category>
+        <pattern>HOW DID <set>creators</set> CONTRIBUTE</pattern>
+        <template><map name="creators"><star/></map></template>
+    </category>
+    
+    <category>
+        <pattern>HOW DID * CONTRIBUTE</pattern>
+        <template>I doubt that.</template>
+    </category>
+    
+    <!--$ Wildcard-->
+    <category>
+        <pattern># AIML #</pattern>
+        <template>I love AIML</template>
+    </category>
+
+    <category>
+        <pattern>$WHAT IS AIML</pattern>
+        <template>Artificial Intelligence Markup Language</template>
+    </category>
+    
+    <!--Loops-->
+    
+    <category>
+        <pattern>COUNT TO <set>number</set></pattern>
+        <template>
+            <!-- Creating variable with value 0 -->
+            <think><set name="count">0</set></think>
+            <!--Condition for, variable count to be equal to specified number-->
+            <condition name="count">
+                <!--Printing value-->
+                <li><value><star/></value></li>
+                <!--Incrementing value using successor and get-->
+                <li>
+                    <set name="count">
+                        <map name = "successor"><get name="count"/></map>
+                    </set>
+                    <break/> <!--Giving linebreak-->
+                <loop/> <!--Forming a looping construct-->
+                </li>
+            </condition>
+        </template>
+    </category>
+    
+    <!--Quick replies-->
+    <category>
+        <pattern>HI</pattern>
+        <template>
+            Hi! Some things you could ask me.
+            <reply>
+                <text>Roll a dice</text>
+                <postback>ROLL A DICE</postback>
+            </reply>
+            <reply>
+                <text>I could ask you some things if you like too!</text>
+                <postback>ASK ME A QUESTION</postback>
+            </reply>
+        </template>
+    </category>
+    
+    <!--Button Tag-->
+    <category>
+        <pattern>HELLO</pattern>
+        <template>
+            Hello! Some things you could ask me.
+            <button>
+                <text>Roll a dice</text>
+                <postback>ROLL A DICE</postback>
+            </button>
+            <button>
+                <text>I could ask you some things if you like too!</text>
+                <postback>ASK ME A QUESTION</postback>
+            </button>
+        </template>
+    </category>
+    
+    <!--Link-->
+    <category>
+        <pattern>WHERE IS OPENGENUS</pattern>
+        <template>
+            <link>
+                <text>Right here!(Click me)</text>
+                <url>iq.opengenus.org</url>
+            </link>
+        </template>
+    </category>
+    
+    <!--Formatting-->
+    <category>
+        <pattern>CAN YOU SPEAK A B C</pattern>
+        <template>
+            <reply>
+                <text>Separate messages</text>
+                <postback>CAN YOU SPEAK A B C IN SEPARATE MESSAGES</postback>
+            </reply>
+            <reply>
+                <text>Taking my time</text>
+                <postback>CAN YOU SPEAK A B C TAKING YOUR TIME</postback>
+            </reply>
+            <reply>
+                <text>In one shot!</text>
+                <postback>CAN YOU SPEAK A B C AT ONCE</postback>
+            </reply>
+        </template>
+    </category>
+    
+    <category>
+        <pattern>CAN YOU SPEAK A B C IN SEPARATE MESSAGES</pattern>
+        <template>
+            A<split/>
+            B<split/>
+            C
+        </template>
+    </category>
+    
+    <category>
+        <pattern>CAN YOU SPEAK A B C TAKING YOUR TIME</pattern>
+        <template>
+            A<delay>2</delay> <!--Giving 2 seconds delay-->
+            B<delay>2</delay>
+            C
+        </template>
+    </category>
+    
+    <category>
+        <pattern>CAN YOU SPEAK A B C AT ONCE</pattern>
+        <template>
+            A<break/>
+            B<break/>
+            C
+        </template>
+    </category>
+    
+    <!--Date-->
+    <category>
+        <pattern>WHAT IS THE DATE TODAY</pattern>
+        <template>Today is <date/></template>
+    </category>
+    
+    <category>
+        <pattern>WHAT DAY IT IS</pattern>
+        <template>Today is <date format="%A"/></template>
+    </category>
+    
+    <!--Input-->
+    <category>
+        <pattern>WHAT DID I JUST SAY</pattern>
+        <template>
+            You said <input index="2"/> 
+            <learn>
+                <category>
+                    <pattern>WHAT DID YOU REPLY</pattern>
+                        <template>I replied <response index="2"/></template>
+                </category>
+            </learn>
+        </template>
+    </category>
+
+    </aiml>
